@@ -1,0 +1,96 @@
+
+generator client {
+  provider        = "prisma-client-js"
+
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+// Define the Attachment model
+ 
+ 
+
+ 
+// Define the MuxData model
+ 
+
+// Define the UserProgress model
+ 
+
+ 
+// Define the Purchase model
+ 
+
+// Define the modpurchase model
+ 
+ 
+// Define the StripeCustomer model
+ 
+model Organization {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  createdBy        String
+  contactsNumber   String
+  orgEmail         String
+  organizationSize String
+  knowledgeBase    String?
+  orgJiraDomain    String?
+
+  isPending        Boolean            @default(false)
+  // Remove subscription field if moving it to a separate model:
+  // subscription   SubscriptionType   @default(FREE)
+  customerId String?
+  // Relations
+  activeSubscriptionId String? @db.ObjectId
+  users            User[]
+}
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+model User {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId 
+  userId         String        @unique
+  email          String?       @unique
+  imageUrl       String?
+  firstName      String?
+  lastName       String?
+  userName       String?       @unique
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  organizationId String?       @db.ObjectId
+ 
+ 
+  badges         Int           @default(0)
+  points         Int           @default(0)
+  joiningLetter                String?
+
+  contactNumber String?
+
+  
+}
+
+ 
+
+ 
+ 
+
+// post model  
+
+ 
+
+ 
+
+ 
+ 
+
+ 
