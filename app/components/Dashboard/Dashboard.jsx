@@ -7,7 +7,7 @@ const Dashboard = () => {
         <div className="dashboard-image">
           <div className="dashboard-logo">
             <span className="dashboard-logo-icon">◉</span>
-            <span className="dashboard-logo-text">Index</span>
+            <span className="dashboard-logo-text">aHRi</span>
           </div>
           <div className="dashboard-mockup">
             <div className="dashboard-header">

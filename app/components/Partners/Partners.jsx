@@ -8,31 +8,31 @@ const Partners = () => {
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">◎</span>
-              <span>Logoipsum</span>
+              <span>Github</span>
             </div>
           </div>
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">☀</span>
-              <span>Logoipsum</span>
+              <span>MongoDB Atlas </span>
             </div>
           </div>
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">◉</span>
-              <span>logoipsum</span>
+              <span>Google Gemini </span>
             </div>
           </div>
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">⚡</span>
-              <span>LOGO</span>
+              <span>Clerk</span>
             </div>
           </div>
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">◎</span>
-              <span>Logoipsum</span>
+              <span>Vercel</span>
             </div>
           </div>
         </div>

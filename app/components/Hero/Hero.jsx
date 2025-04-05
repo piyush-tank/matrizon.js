@@ -15,7 +15,7 @@ const Hero = () => {
 
         <div className="hero-buttons">
           <a href="#" className="primary-button">
-            Get Template
+            Get Started
           </a>
           <a href="#" className="secondary-button">
             Learn More
