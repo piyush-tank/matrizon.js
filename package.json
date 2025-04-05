@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-     "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@ai-sdk/google": "^1.1.25",
@@ -31,6 +31,7 @@
     "file-saver": "^2.0.5",
     "googleapis": "^148.0.0",
     "lucide-react": "^0.482.0",
+    "motion": "^12.6.3",
     "next": "15.2.4",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
