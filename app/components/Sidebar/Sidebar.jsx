@@ -7,7 +7,7 @@ const Sidebar = ({ isOpen }) => {
         <div className="sidebar-header">
           <div className="sidebar-logo">
             <span className="logo-icon">◉</span>
-            <span className="logo-text">Index</span>
+            <span className="logo-text">aHRi</span>
           </div>
         </div>
 
