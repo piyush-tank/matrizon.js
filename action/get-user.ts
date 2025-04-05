@@ -37,14 +37,7 @@ export const getUserfullDetail = async (username?: string) => {
         },
         
       });
-    } else {
-      return await db.user.findFirst({
-        where: {
-          userName: username,
-        },
-       
-      });
-    }
+    } 
   } catch (error) {
     return null;
   }
