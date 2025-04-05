@@ -5,10 +5,6 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-grid-overlay"></div>
       <div className="hero-container">
-        <div className="funding-badge">
-          <span className="funding-icon">💰</span>
-          We raised $1M as pre-seed fund
-        </div>
 
         <h1 className="hero-title">The AI SaaS your product needs</h1>
 
