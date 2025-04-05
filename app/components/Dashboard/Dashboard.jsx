@@ -1,44 +1,165 @@
-import "./Dashboard.css"
-
 const Dashboard = () => {
   return (
-    <section className="dashboard">
-      <div className="dashboard-container">
-        <div className="dashboard-image">
-          <div className="dashboard-logo">
-            <span className="dashboard-logo-icon">◉</span>
-            <span className="dashboard-logo-text">aHRi</span>
-          </div>
-          <div className="dashboard-mockup">
-            <div className="dashboard-header">
-              <div className="dashboard-search"></div>
-              <div className="dashboard-controls">
-                <div className="dashboard-dot"></div>
-                <div className="dashboard-dot"></div>
-                <div className="dashboard-line"></div>
-              </div>
+    <>
+      <style>
+        {`
+          .dashboard {
+            padding: 40px 0;
+            position: relative;
+          }
+
+          .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+          }
+
+          .dashboard-image {
+            position: relative;
+            background: linear-gradient(to right, rgba(0, 230, 118, 0.1), transparent);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+          }
+
+          .dashboard-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+          }
+
+          .dashboard-logo-icon {
+            color: #00e676;
+            margin-right: 8px;
+            font-size: 1.2rem;
+          }
+
+          .dashboard-logo-text {
+            color: #00e676;
+            font-weight: 600;
+          }
+
+          .dashboard-mockup {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+          }
+
+          .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          .dashboard-search {
+            width: 40%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+          }
+
+          .dashboard-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .dashboard-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+
+          .dashboard-line {
+            width: 30px;
+            height: 8px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+
+          .dashboard-content {
+            display: flex;
+            padding: 12px;
+            gap: 12px;
+          }
+
+          .dashboard-sidebar {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .sidebar-item {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+          }
+
+          .dashboard-main {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+          }
+
+          .dashboard-card {
+            width: calc(33.333% - 8px);
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+          }
+
+          .dashboard-row {
+            width: 100%;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 8px;
+          }
+        `}
+      </style>
+
+      <section className="dashboard">
+        <div className="dashboard-container">
+          <div className="dashboard-image">
+            <div className="dashboard-logo">
+              <span className="dashboard-logo-icon">◉</span>
+              <span className="dashboard-logo-text">aHRi</span>
             </div>
-            <div className="dashboard-content">
-              <div className="dashboard-sidebar">
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
+            <div className="dashboard-mockup">
+              <div className="dashboard-header">
+                <div className="dashboard-search"></div>
+                <div className="dashboard-controls">
+                  <div className="dashboard-dot"></div>
+                  <div className="dashboard-dot"></div>
+                  <div className="dashboard-line"></div>
+                </div>
               </div>
-              <div className="dashboard-main">
-                <div className="dashboard-card"></div>
-                <div className="dashboard-card"></div>
-                <div className="dashboard-card"></div>
-                <div className="dashboard-row"></div>
-                <div className="dashboard-row"></div>
+              <div className="dashboard-content">
+                <div className="dashboard-sidebar">
+                  <div className="sidebar-item"></div>
+                  <div className="sidebar-item"></div>
+                  <div className="sidebar-item"></div>
+                  <div className="sidebar-item"></div>
+                </div>
+                <div className="dashboard-main">
+                  <div className="dashboard-card"></div>
+                  <div className="dashboard-card"></div>
+                  <div className="dashboard-card"></div>
+                  <div className="dashboard-row"></div>
+                  <div className="dashboard-row"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+    </>
+  );
+};
 
-export default Dashboard
-
+export default Dashboard;
