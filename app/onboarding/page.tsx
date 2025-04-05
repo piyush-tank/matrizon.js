@@ -55,7 +55,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="flex justify-between items-center h-screen w-full">
+    <div className="flex justify-between items-center h-screen w-full bg-black text-white">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl mx-auto p-8 space-y-6 bg-zinc-950 border rounded-lg shadow-sm border-zinc-700"

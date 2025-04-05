@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <aside className="w-64  bg-gray-50 border-r">
+    <aside className="w-64 bg-black text-white border-r">
       <nav className="p-6">
         <ul className="space-y-4">
           <li>
