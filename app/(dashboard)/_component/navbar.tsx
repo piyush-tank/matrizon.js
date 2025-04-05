@@ -1,28 +1,49 @@
+"use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { UserButton, useClerk } from "@clerk/nextjs";
 
-export default function Navbar() {
+const Navbar = () => {
+  const [showBackgroundMenu, setShowBackgroundMenu] = useState(false);
+  const { signOut } = useClerk();
+
+  const toggleBackgroundMenu = () => {
+    setShowBackgroundMenu(!showBackgroundMenu);
+  };
+
+  const handleLogout = async () => {
+    await signOut();
+  };
+
   return (
-    <header className="bg-white border-b shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/">
-          <h1 className="text-xl font-bold">My App</h1>
-        </Link>
-        <nav className="space-x-4 flex items-center">
-          <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
-            Dashboard
-          </Link>
-          <Link href="/profile" className="text-gray-600 hover:text-gray-800">
-            Profile
-          </Link>
-          <Link href="/settings" className="text-gray-600 hover:text-gray-800">
-            Settings
-          </Link>
-          <Button variant="outline" size="sm">
-            Sign Out
-          </Button>
-        </nav>
-      </div>
-    </header>
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="sidebar-header">
+            <div className="sidebar-logo">
+              <span className="logo-icon">◉</span>
+              <span className="logo-text">aHRi</span>
+            </div>
+          </div>
+
+          <div className="navbar-right">
+            <div className="navbar-actions flex items-center gap-4">
+              {/* 👤 User Profile Button from Clerk */}
+              <UserButton afterSignOutUrl="/sign-in" />
+
+              {/* 🔓 Logout Button */}
+              <button
+                className="logout-button"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
   );
-}
+};
+
+export default Navbar;

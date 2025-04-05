@@ -22,7 +22,7 @@ const DashboardLayout =  async ({ children }: { children: React.ReactNode }) => 
 
    
   return (
-    <div className="h-screen w-full flex">
+    <div className="h-screen overflow-hidden w-full flex">
       <LayoutWrapper verified={verified}   user={user} >
         {children}
       </LayoutWrapper>

@@ -88,11 +88,11 @@ export default function Home() {
     }
   }, [inputref]);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
+  // useEffect(() => {
+  //   if (scrollRef.current) {
+  //     scrollRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // }, [messages]);
 
   return (
     <main className={`${poppins.className} h-[calc(100%-60px)]`}>

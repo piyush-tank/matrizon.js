@@ -39,7 +39,7 @@ model Organization {
   organizationSize String
   knowledgeBase    String?
   orgJiraDomain    String?
-
+  execlUrl String?
   isPending        Boolean            @default(false)
   // Remove subscription field if moving it to a separate model:
   // subscription   SubscriptionType   @default(FREE)
@@ -68,7 +68,7 @@ model User {
   
   organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String?       @db.ObjectId
- 
+  role  String @default("HR")
  
   badges         Int           @default(0)
   points         Int           @default(0)

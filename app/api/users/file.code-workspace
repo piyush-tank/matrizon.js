@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "file",
+			"path": "../../../../rhbexexlautomation/file"
+		},
+		{
+			"name": "rhbhr",
+			"path": "../../.."
+		}
+	],
+	"settings": {}
+}

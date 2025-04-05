@@ -10,6 +10,7 @@ import { Pinecone } from "@pinecone-database/pinecone";
 import { MainPrompt2 } from "./_components/prompts";
 import { MailSend } from "./_components/send-mail";
 import { db } from "@/prisma/db";
+import { execl } from "./_components/excelpromt";
 
 
 // Google Generative AI setup
@@ -47,53 +48,28 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { messages }: { messages: Array<Message> } = body;
 
-    const pineconeIndex = pinecone.Index(org?.organization?.id!); // Replace with your Pinecone index name
+
 
     const knowledge = org?.organization?.knowledgeBase
       ? `Organization Knowledge: ${org.organization.knowledgeBase}`
       : `User hasn't filled any data. Respond with: "First fill your data sir! PLEASE 🫡"`;
 
-    // const newIssue = await createJiraIssue(
-    //   {
-    //     summary: "Bug in login flow",
-    //     description: "Users are unable to log in with social authentication.",
-    //     issueType: "Bug",
-    //     projectKey: "KAN",
-    //     issueId: "10005"
-    //   }
-    // );
-
-    // console.log("Created Issue:", newIssue);
-
-    // Get the latest user message
-    // const lastUserMessage =
-    //   messages.filter((msg) => msg.role === "user").pop()?.content || "";
-
-    // // Create embedding for the user's query
-    // const userEmbedding = await model1.doEmbed({ values: [lastUserMessage] });
-
-    // const queryResults = await pineconeIndex.query({
-    //   vector: userEmbedding.embeddings[0], // Use first embedding
-    //   topK: 3, // Fetch top 3 most relevant
-    //   includeMetadata: true,
-    // });
-
-    // console.log(queryResults)
-
-    // // Extract relevant contexts
-    // const relevantContexts = queryResults.matches
-    // .filter((match) => match.score !== undefined && match.score >= 0.5)
-    // .map(match => match.metadata?.text)
-    // .filter(Boolean)
-    // .join("\n");
+  
+   
 
     const mainPrompt = await MainPrompt2(req);
+  const exclPromt = await execl 
 
     const prompt = (messages: Message[]): Message[] => [
       {
         id: genid(),
         role: "system",
         content: mainPrompt,
+      },
+      {
+        id: genid(),
+        role: "system",
+        content:exclPromt
       },
       {
         id: genid(),

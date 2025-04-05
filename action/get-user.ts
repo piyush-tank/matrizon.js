@@ -10,7 +10,7 @@ const getUser = async (): Promise<null | User> => {
 
   if (!userId) return null;
   try {
-    const user = await db.user.findFirst({
+    const user = await db.user.findUnique({
       where: {
         userId: userId,
       },
