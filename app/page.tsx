@@ -33,7 +33,7 @@ function App() {
           <Navbar toggleSidebar={toggleSidebar} onLogout={handleLogout} />
           <div className="app-container">
             <Sidebar isOpen={sidebarOpen} />  
-            <main className={`main-content ${sidebarOpen ? "sidebar-open" : ""}`}>
+            <main style={{backgroundColor:"black"}} className={`main-content ${sidebarOpen ? "sidebar-open" : ""}`}>
               {/* <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/hr-ai-agent" element={<HrAiAgent />} />
@@ -42,10 +42,11 @@ function App() {
                 <Route path="/resume-shortlisted" element={<ResumeShortlisted />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>      */}
-
-
-
-
+              <Home></Home>
+              <HrAiAgent></HrAiAgent>
+              <UserPanel></UserPanel>
+              <ExcelAutomation></ExcelAutomation>
+              <ResumeShortlisted></ResumeShortlisted>
             </main>
           </div>
         </>
