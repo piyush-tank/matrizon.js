@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
         role: "system",
         content:
           knowledge ||
-          `Whatever user says, just say, "First fill your data sir! PLEASE 🫡"`,
+          `Whatever user says, just say, "First fill your knowledge form🫡"`,
       },
       // {
       //   id: genid(),

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, SetStateAction } from "react";
- 
+import { useRouter } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import {
   Handshake,
@@ -10,48 +10,44 @@ import {
   Send,
   Sparkles,
   Users,
+  ArrowLeft,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import extractJsonFromString from "./get-json";
- 
+import { Button } from "@/components/ui/button";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
-export default function Chat( { excelData ,  setExcelData} : { excelData :string , setExcelData : React.Dispatch<SetStateAction<string>>} ) {
+export default function Chat({ excelData, setExcelData }: { excelData: string; setExcelData: React.Dispatch<SetStateAction<string>> }) {
+  // Initialize router for back navigation
+
+
   // 1. Set up chat + local state
   const { messages, input, handleInputChange, handleSubmit, status, stop } = useChat();
-  
   const [messageTimestamps] = useState(new Map<string, string>());
 
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
- 
- 
- 
- 
+
   // 3. Submit chat message + Excel data
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     let updatedInput = input;
-    // if (excelData) {
-      
-    //   updatedInput += \n\nExcel Data: ${JSON.stringify(excelData)};
-    //   console.log(updatedInput)
-    // }
-    // Update the input field with appended Excel data
-    handleInputChange({ target: { value: updatedInput  }, } as React.ChangeEvent<HTMLInputElement>);
+    // You could append Excel data to the message here if needed
+    handleInputChange({ target: { value: updatedInput } } as React.ChangeEvent<HTMLInputElement>);
     try {
-       handleSubmit();
+      handleSubmit();
     } catch (error) {
       console.error("Error during submission:", error);
     }
   };
+
   // 4. Focus + Autoscroll
   useEffect(() => {
     if (inputRef.current) {
@@ -73,7 +69,7 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
     return messageTimestamps.get(messageId);
   };
 
-  // 6. Example suggestions
+  // 6. Example suggestions (if needed)
   const suggestions = [
     {
       icon: <Handshake className="w-4 h-4 mr-2" />,
@@ -103,64 +99,52 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
     } as React.ChangeEvent<HTMLInputElement>);
     if (inputRef.current) inputRef.current.focus();
   };
+
+  // 7. Process messages to extract Excel data when available
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
-    const tempJson = excelData
+      const tempJson = excelData;
       if (lastMessage.role === "assistant") {
         // Extract JSON if present
-        const extractedJson = extractJsonFromString(lastMessage.content , "filebase64");
-  
+        const extractedJson = extractJsonFromString(lastMessage.content, "filebase64");
         if (extractedJson) {
-          // console.log("Extracted JSON Data:", extractedJson);
           setExcelData(extractedJson); // Store extracted data in state
         } else {
-          setExcelData(tempJson)
+          setExcelData(tempJson);
         }
       }
     }
-  }, [messages]); // Runs whenever `messages` updates
-  
+  }, [messages]);
 
   return (
-    <main className={`${poppins.className} bg-black shrink-0 h-screen w-[600px]`}>
+    <main className={`${poppins.className} shrink-0 h-screen w-[600px] bg-white`}>
+      {/* Navbar with Back Button */}
+     
+
       <div className="flex h-full bg-white">
         <div className="flex rounded-lg flex-col items-center shadow-lg justify-center p-6 relative w-full">
-          {/* If no messages, show a welcome screen */}
+          {/* Welcome Screen */}
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center flex-1">
-            
-              <h1 className="text-2xl font-bold text-gray-800 text-center">
+              <h1 className="text-2xl font-bold text-black text-center">
                 Welcome to Execel Automation
               </h1>
-             
-              {/* <div className="flex flex-wrap justify-center gap-2 mt-10 text-sm md:text-base">
-                {suggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    className="bg-[#FCF9FF] text-black text-[14px] transition-all duration-300 font-medium px-4 py-2 rounded-md hover:bg-[#F4E8FF] shadow flex items-center"
-                    onClick={() => handleSuggestionClick(suggestion.text)}
-                  >
-                    {suggestion.icon}
-                    {suggestion.text}
-                  </button>
-                ))}
-              </div> */}
             </div>
           )}
 
-          {/* Chat messages */}
+          {/* Chat Messages */}
           {messages.length > 0 && (
             <div className="w-full h-[88%] p-4 absolute top-0 justify-start flex flex-col">
               <div className="overflow-y-auto flex-grow">
                 {messages.map((message) => (
-                  <div key={message.id}>
+                  <div key={message.id} className="mb-4">
                     {message.role === "assistant" ? (
                       <div className="w-full text-[14px] mx-auto px-10 flex">
                         <div className="ml-1">
-                          <div className="bg-[#EFEEEE] text-gray-800 p-3 rounded-lg relative">
+                          <div className="bg-gray-100 text-black p-3 rounded-lg relative">
                             <div
-                              className="absolute -start-[6px] top-0 w-3 h-10 bg-inherit"
+                              className="absolute -left-2 top-0 w-3 h-10 bg-white"
                               style={{ clipPath: "polygon(100% 0, 100% 50%, 0 0)" }}
                             ></div>
                             <ReactMarkdown
@@ -170,7 +154,7 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
                                   return (
                                     <pre
                                       {...props}
-                                      className="bg-gray-200 p-2 rounded1"
+                                      className="bg-gray-200 p-2 rounded text-black"
                                       ref={props.ref as React.LegacyRef<HTMLPreElement>}
                                     >
                                       <code>{children}</code>
@@ -180,31 +164,24 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
                                 ul: ({ children }) => <ul className="list-disc ml-4">{children}</ul>,
                                 ol: ({ children }) => <ol className="list-decimal ml-4">{children}</ol>,
                                 a: ({ node, ...props }) => (
-                                  <a
-                                    {...props}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-500"
-                                  >
+                                  <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-500">
                                     {props.children}
                                   </a>
                                 ),
                               }}
                             >
-                              {extractJsonFromString(message.content , "content")}
+                              {extractJsonFromString(message.content, "content")}
                             </ReactMarkdown>
                           </div>
-                          <span className="text-xs text-gray-400 mb-1">
-                            {getMessageTime(message.id)}
-                          </span>
+                          <span className="text-xs text-gray-500">{getMessageTime(message.id)}</span>
                         </div>
                       </div>
                     ) : (
                       <div className="w-full mx-auto text-[14px] py-6 justify-end px-10 flex">
                         <div>
-                          <div className="bg-[#F5F5F5] p-2 text-gray-800 rounded-lg relative">
+                          <div className="bg-white p-2 text-black rounded-lg relative border border-gray-200">
                             <div
-                              className="absolute -end-[6px] top-0 w-3 h-10 bg-inherit"
+                              className="absolute -right-2 top-0 w-3 h-10 bg-white"
                               style={{ clipPath: "polygon(100% 0, 0 0, 0 41%)" }}
                             ></div>
                             <ReactMarkdown
@@ -214,7 +191,7 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
                                   return (
                                     <pre
                                       {...props}
-                                      className="bg-gray-200 p-2 rounded1"
+                                      className="bg-gray-200 p-2 rounded text-black"
                                       ref={props.ref as React.LegacyRef<HTMLPreElement>}
                                     >
                                       <code>{children}</code>
@@ -228,9 +205,7 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
                               {message.content}
                             </ReactMarkdown>
                           </div>
-                          <span className="text-xs text-gray-400 mb-1">
-                            {getMessageTime(message.id)}
-                          </span>
+                          <span className="text-xs text-gray-500">{getMessageTime(message.id)}</span>
                         </div>
                         <Image
                           alt="user"
@@ -248,25 +223,34 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
             </div>
           )}
 
-          {/* File upload + chat input */}
+          {/* Streaming Status */}
+          <div className="w-full flex flex-col justify-center items-center absolute bottom-24">
+            {(status === "submitted" || status === "streaming") && (
+              <div className="flex justify-center gap-2 items-center mb-1">
+                {status === "submitted" && <span className="text-black">Submitted</span>}
+                <Button onClick={stop}>
+                  Stop
+                  <Loader className="animate-spin ml-2" />
+                </Button>
+              </div>
+            )}
+          </div>
+
+          {/* Chat Input */}
           <div className="w-full flex-col justify-center shadow-md rounded-lg flex items-center absolute bottom-0">
-           
-            <div className="w-full mb-2 flex-col justify-center rounded-lg flex items-center">
+            <div className="w-full mb-2 flex flex-col justify-center rounded-lg flex items-center">
               <form
-                className="w-5/6 text-black flex rounded-lg items-center border-[#180047] border-2 bg-[#FFFFFF]"
+                className="w-5/6 flex rounded-lg items-center border border-gray-300 bg-white"
                 onSubmit={submit}
               >
                 <input
                   ref={inputRef}
-                  className="h-12 rounded-md bg-white px-4 text-sm flex-grow focus:outline-none border-none"
+                  className="h-12 rounded-md bg-white px-4 text-sm flex-grow text-black focus:outline-none border-none"
                   placeholder="Send a message"
                   value={input}
                   onChange={handleInputChange}
                 />
-                <button
-                  type="submit"
-                  className="bg-[#53108d] p-2 text-white mr-1 rounded-lg hover:bg-[#53108dc0]"
-                >
+                <button type="submit" className="bg-blue-500 p-2 text-white mr-1 rounded-lg hover:bg-blue-600">
                   <Send className="w-5 h-5" />
                 </button>
               </form>
@@ -274,7 +258,6 @@ export default function Chat( { excelData ,  setExcelData} : { excelData :string
           </div>
         </div>
       </div>
-   
     </main>
   );
 }
