@@ -7,14 +7,14 @@ import AHRiLandingPage from '@/components/ahri-landing-page'
 import React from 'react'
 
 const Page = () => {
-  // const { isSignedIn, isLoaded } = useUser()
-  // const router = useRouter()
+  const { isSignedIn, isLoaded } = useUser()
+  const router = useRouter()
 
-  // useEffect(() => {
-  //   if (isLoaded && isSignedIn) {
-  //     router.push('/dashboard')
-  //   }
-  // }, [isSignedIn, isLoaded])
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      router.push('/dashboard')
+    }
+  }, [isSignedIn, isLoaded])
 
   return <AHRiLandingPage />
 }
