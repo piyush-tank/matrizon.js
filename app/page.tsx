@@ -7,6 +7,7 @@ import HrAiAgent from "./pages/HrAiAgent/HrAiAgent"
 import UserPanel from "./pages/UserPanel/UserPanel"
 import ExcelAutomation from "./pages/ExcelAutomation/ExcelAutomation"
 import ResumeShortlisted from "./pages/ResumeShortlisted/ResumeShortlisted"
+import Sidebar from "./components/Sidebar/Sidebar"
 import "./App.css"
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         <>
           <Navbar toggleSidebar={toggleSidebar} onLogout={handleLogout} />
           <div className="app-container">
-            {/* <Sidebar isOpen={sidebarOpen} />   */}
+            <Sidebar isOpen={sidebarOpen} />  
             <main className={`main-content ${sidebarOpen ? "sidebar-open" : ""}`}>
               {/* <Routes>
                 <Route path="/" element={<Home />} />

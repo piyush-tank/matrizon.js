@@ -1,5 +1,7 @@
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
+import Link from 'next/link';
 import "./Sidebar.css"
+
 
 const Sidebar = ({ isOpen }) => {
   return (
@@ -17,22 +19,22 @@ const Sidebar = ({ isOpen }) => {
             <div className="menu-title">Main</div>
             <ul className="menu-items">
               <li className="menu-item">
-                <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+                <Link href="/" className={({ isActive }) => (isActive ? "active" : "")}>
                   <span className="menu-icon">🏠</span>
                   <span className="menu-text">Dashboard</span>
-                </NavLink>
+                </Link>
               </li>
               <li className="menu-item">
-                <NavLink to="/hr-ai-agent" className={({ isActive }) => (isActive ? "active" : "")}>
+                <Link href="/hr-ai-agent" className={({ isActive }) => (isActive ? "active" : "")}>
                   <span className="menu-icon">🤖</span>
                   <span className="menu-text">HR AI Agent</span>
-                </NavLink>
+                </Link>
               </li>
               <li className="menu-item">
-                <NavLink to="/user-panel" className={({ isActive }) => (isActive ? "active" : "")}>
+                <Link href="/user-panel" className={({ isActive }) => (isActive ? "active" : "")}>
                   <span className="menu-icon">👤</span>
                   <span className="menu-text">User Panel</span>
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>
@@ -41,16 +43,16 @@ const Sidebar = ({ isOpen }) => {
             <div className="menu-title">Tools</div>
             <ul className="menu-items">
               <li className="menu-item">
-                <NavLink to="/excel-automation" className={({ isActive }) => (isActive ? "active" : "")}>
+                <Link href="/excel-automation" className={({ isActive }) => (isActive ? "active" : "")}>
                   <span className="menu-icon">📊</span>
                   <span className="menu-text">Excel Automation</span>
-                </NavLink>
+                </Link>
               </li>
               <li className="menu-item">
-                <NavLink to="/resume-shortlisted" className={({ isActive }) => (isActive ? "active" : "")}>
+                <Link href="/resume-shortlisted" className={({ isActive }) => (isActive ? "active" : "")}>
                   <span className="menu-icon">📄</span>
                   <span className="menu-text">Resume Shortlisted</span>
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>
