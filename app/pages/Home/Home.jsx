@@ -14,7 +14,7 @@ const Home = () => {
       <Partners />
       <Features />
       <Scalability />
-      <Stats />
+      {/* <Stats /> */}
     </div>
   )
 }

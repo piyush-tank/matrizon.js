@@ -28,13 +28,13 @@ const Partners = () => {
               <span className="partner-icon">⚡</span>
               <span>Clerk</span>
             </div>
-          </div>
+          </div>  
           <div className="partner-item">
             <div className="partner-logo">
               <span className="partner-icon">◎</span>
               <span>Vercel</span>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     </section>
