@@ -9,9 +9,7 @@ import React, {
   useState,
 } from "react";
 
-import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
-
+ 
 import Navbar from "../../_component/navbar";
 import { Tverified } from "@/action/get-user-privatedata";
 import Sidebar from "../../_component/sidebar";
@@ -50,7 +48,7 @@ export default function LayoutWrapper({
   children: React.ReactNode;
   verified: Tverified;
 }) {
-  const pathname = usePathname();
+ 
   const [rigntSideBarOpen, setRightSideBarOpen] = useState(false);
   const [isCreatingPost, setPostCreating] = useState(false);
   return (

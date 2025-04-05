@@ -41,7 +41,7 @@ export default function OnboardingPage() {
       method: "POST",
       body: JSON.stringify({
         userId: user?.id,
-        email: user?.primaryEmailAddress?.emailAddress,
+        
         imageUrl: user?.imageUrl,
         ...form,
       }),

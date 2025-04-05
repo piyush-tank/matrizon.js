@@ -34,12 +34,13 @@ export async function POST(req: Request) {
     const newUser = await db.user.create({
       data: {
         userId,
-        email,
+        email : organizationEmail,
         imageUrl,
         firstName,
         lastName,
         contactNumber: userContact,
         organizationId: org.id,
+        
       },
     });
 

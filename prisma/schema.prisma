@@ -65,7 +65,7 @@ model User {
   imageUrl       String?
   firstName      String?
   lastName       String?
-  userName       String?       @unique
+  
   organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String?       @db.ObjectId
  
