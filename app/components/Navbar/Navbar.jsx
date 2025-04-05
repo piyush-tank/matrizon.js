@@ -163,7 +163,7 @@ const Navbar = ({ toggleSidebar, onLogout }) => {
 
             <div className="navbar-logo">
               <span className="logo-icon">◉</span>
-              <span className="logo-text">Index</span>
+              <span className="logo-text">aHRi</span>
             </div>
           </div>
 
