@@ -14,6 +14,14 @@ const Sidebar = () => {
               <div className="menu-group">
                 <div className="menu-title">Main</div>
                 <ul className="menu-items">
+                <li className="menu-item">
+                    <Link href="/dashboard/home" legacyBehavior>
+                      <a className="link">
+                        <span className="menu-icon">🏠</span>
+                        <span className="menu-text">Home</span>
+                      </a>
+                    </Link>
+                  </li>
                   <li className="menu-item">
                     <Link href="/dashboard/chat" legacyBehavior>
                       <a className="link">
@@ -60,14 +68,14 @@ const Sidebar = () => {
                       </a>
                     </Link>
                   </li>
-                  <li className="menu-item">
+                  {/* <li className="menu-item">
                     <Link href="/resume-shortlisted" legacyBehavior>
                       <a className="link">
                         <span className="menu-icon">📄</span>
                         <span className="menu-text">Resume Shortlisted</span>
                       </a>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </>

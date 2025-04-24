@@ -65,6 +65,7 @@ const CreateUserForm = () => {
           value={formData.firstName}
           onChange={handleChange}
           placeholder="Enter first name"
+          className="text-green-400 border-green-500 border-2"
         />
       </div>
       <div>
@@ -75,6 +76,7 @@ const CreateUserForm = () => {
           value={formData.lastName}
           onChange={handleChange}
           placeholder="Enter last name"
+          className="text-green-400 border-green-500 border-2"
         />
       </div>
       <div>
@@ -86,6 +88,7 @@ const CreateUserForm = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Enter email"
+          className="text-green-400 border-green-500 border-2"
         />
       </div>
       <div>
@@ -96,6 +99,7 @@ const CreateUserForm = () => {
           value={formData.contactNumber}
           onChange={handleChange}
           placeholder="Enter contact number"
+          className="text-green-400 border-green-500 border-2"
         />
       </div>
       <div>
@@ -107,9 +111,10 @@ const CreateUserForm = () => {
           value={formData.role}
           onChange={handleChange}
           placeholder="Enter role"
+          className="text-green-400 border-green-500 border-2 "
         />
       </div>
-      <Button type="submit">Create User</Button>
+      <Button className="border border-green-500 border-2" type="submit">Create User</Button>
     </form>
   );
 };

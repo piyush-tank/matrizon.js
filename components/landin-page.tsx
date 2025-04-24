@@ -42,10 +42,10 @@ export default function AHRiLandingPage() {
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8 w-full max-w-3xl">
-            <FeatureIcon
+            {/* <FeatureIcon
               icon={<FileText className="w-6 h-6" />}
               label="Resume Shortlisting"
-            />
+            /> */}
             <FeatureIcon
               icon={<FileSpreadsheet className="w-6 h-6" />}
               label="Excel Automation"

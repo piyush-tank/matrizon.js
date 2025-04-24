@@ -28,14 +28,18 @@ interface DisplayExecelProps {
 }
 
 export default function DisplayExecel({ excelData }: DisplayExecelProps) {
-  // If no data is provided, show a message asking the user to ask the bot for data
+  // If no data is Found because you till now you does not interact with bot 
   if (!excelData || excelData.length === 0) {
     return (
+      <>
+      <Button style={{marginTop:"3rem",marginLeft:"2.5rem"}} className="bg-green-500 text-black">Back To Home</Button>
       <div className="flex items-center justify-center h-screen">
-        <p className="text-lg mx-auto text-gray-700">
-          Data is not available. Please ask the bot to provide the data.
+       
+        <p style={{fontWeight:"700"}} className="text-lg mx-auto text-green-500 ">
+        No data found. It seems you haven't interacted with the bot yet.
         </p>
       </div>
+      </>
     );
   }
 
@@ -61,11 +65,11 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
   });
 
   return (
-    <div className="w-full h-screen flex flex-col justify-between text-black overflow-auto p-4 pb-0 bg-gray-50 rounded-md">
+    <div className="w-full h-screen flex flex-col justify-between text-black overflow-auto p-4 pb-0 bg-black rounded-md">
       <div>
         <div className="flex justify-between mb-4">
-          <h2 className="text-lg font-bold">Excel Table</h2>
-          <Button onClick={() => downloadExcel(excelData)} variant="outline">
+          <h2 className="text-lg font-bold text-green-500">Excel Table</h2>
+          <Button className="bg-green-500 border-3 border-black" onClick={() => downloadExcel(excelData)} variant="outline">
             Download XLSX
           </Button>
         </div>
@@ -74,9 +78,9 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
           <Table className="w-full">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} className="bg-gray-200">
+                <TableRow key={headerGroup.id} className="bg-black text-white">
                   {headerGroup.headers.map((header) => (
-                    <TableHead key={header.id} className="font-semibold">
+                    <TableHead key={header.id} className="font-semibold text-white">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -91,7 +95,7 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
             <TableBody>
               {table.getRowModel().rows.length > 0 ? (
                 table.getRowModel().rows.map((row) => (
-                  <TableRow key={row.id}>
+                  <TableRow className="text-white" key={row.id}>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -101,7 +105,7 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={columns.length} className="h-24 text-center">
+                  <TableCell colSpan={columns.length} className="h-24 text-center text-white">
                     No results.
                   </TableCell>
                 </TableRow>
@@ -112,7 +116,16 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
       </div>
       {/* Pagination controls */}
       <div className="flex items-center justify-end space-x-2 py-4">
+      <Button
+        className="bg-white"
+          variant="outline"
+          size="sm"
+          
+        >
+          Back To Home
+        </Button>
         <Button
+        className="bg-white"
           variant="outline"
           size="sm"
           onClick={() => table.previousPage()}
@@ -121,6 +134,7 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
           Previous
         </Button>
         <Button
+        className="bg-white"
           variant="outline"
           size="sm"
           onClick={() => table.nextPage()}
@@ -128,6 +142,7 @@ export default function DisplayExecel({ excelData }: DisplayExecelProps) {
         >
           Next
         </Button>
+       
       </div>
     </div>
   );

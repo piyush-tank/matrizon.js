@@ -122,12 +122,12 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
       {/* Navbar with Back Button */}
      
 
-      <div className="flex h-full bg-white">
+      <div className="flex h-full bg-black">
         <div className="flex rounded-lg flex-col items-center shadow-lg justify-center p-6 relative w-full">
           {/* Welcome Screen */}
           {messages.length === 0 && (
             <div className="flex flex-col items-center justify-center flex-1">
-              <h1 className="text-2xl font-bold text-black text-center">
+              <h1 className="text-2xl font-bold text-green-500 text-center">
                 Welcome to Execel Automation
               </h1>
             </div>
@@ -142,11 +142,8 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
                     {message.role === "assistant" ? (
                       <div className="w-full text-[14px] mx-auto px-10 flex">
                         <div className="ml-1">
-                          <div className="bg-gray-100 text-black p-3 rounded-lg relative">
-                            <div
-                              className="absolute -left-2 top-0 w-3 h-10 bg-white"
-                              style={{ clipPath: "polygon(100% 0, 100% 50%, 0 0)" }}
-                            ></div>
+                          <div className="bg-green-500 text-black p-3 rounded-lg relative">
+                         
                             <ReactMarkdown
                               remarkPlugins={[remarkGfm]}
                               components={{
@@ -170,20 +167,17 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
                                 ),
                               }}
                             >
-                              {extractJsonFromString(message.content, "content")}
+                              {extractJsonFromString(message.content )}
                             </ReactMarkdown>
                           </div>
-                          <span className="text-xs text-gray-500">{getMessageTime(message.id)}</span>
+                          <span className="text-xs text-white">{getMessageTime(message.id)}</span>
                         </div>
                       </div>
                     ) : (
                       <div className="w-full mx-auto text-[14px] py-6 justify-end px-10 flex">
                         <div>
-                          <div className="bg-white p-2 text-black rounded-lg relative border border-gray-200">
-                            <div
-                              className="absolute -right-2 top-0 w-3 h-10 bg-white"
-                              style={{ clipPath: "polygon(100% 0, 0 0, 0 41%)" }}
-                            ></div>
+                          <div className="bg-green-500 p-2 text-black rounded-lg relative">
+                           
                             <ReactMarkdown
                               remarkPlugins={[remarkGfm]}
                               components={{
@@ -191,7 +185,7 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
                                   return (
                                     <pre
                                       {...props}
-                                      className="bg-gray-200 p-2 rounded text-black"
+                                      className="bg-gray-200 p-2 rounded text-white"
                                       ref={props.ref as React.LegacyRef<HTMLPreElement>}
                                     >
                                       <code>{children}</code>
@@ -205,15 +199,9 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
                               {message.content}
                             </ReactMarkdown>
                           </div>
-                          <span className="text-xs text-gray-500">{getMessageTime(message.id)}</span>
+                          <span className="text-xs text-white">{getMessageTime(message.id)}</span>
                         </div>
-                        <Image
-                          alt="user"
-                          src="/vercel.svg"
-                          width={100}
-                          height={100}
-                          className="w-10 h-10 object-contain"
-                        />
+                     
                       </div>
                     )}
                   </div>
@@ -250,7 +238,7 @@ export default function Chat({ excelData, setExcelData }: { excelData: string; s
                   value={input}
                   onChange={handleInputChange}
                 />
-                <button type="submit" className="bg-blue-500 p-2 text-white mr-1 rounded-lg hover:bg-blue-600">
+                <button type="submit" className="bg-green-500 p-2 text-white mr-1 rounded-lg hover:bg-blue-600">
                   <Send className="w-5 h-5" />
                 </button>
               </form>

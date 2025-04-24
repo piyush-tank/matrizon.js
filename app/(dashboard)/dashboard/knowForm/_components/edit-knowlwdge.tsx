@@ -63,7 +63,7 @@ export default function EditKnowledge({ knowledge }: EditKnowledgeProps) {
         onSubmit={handleSubmit}
         className="flex flex-col w-full max-w-4xl h-full"
       >
-        <h1 className="text-2xl font-bold mb-4">Edit your Knowledge Base</h1>
+        <h1 className="text-2xl text-white font-bold mb-4">Edit your Knowledge Base</h1>
 
         {/* Textarea with 500-word limit */}
         <Textarea
@@ -72,13 +72,13 @@ export default function EditKnowledge({ knowledge }: EditKnowledgeProps) {
           autoCapitalize="none"
           value={data??""}
           onChange={handleChange}
-          className="flex-1 resize-none"
+          className="flex-1 resize-none text-white border-green-500 border-2"
           placeholder="Type your content here..."
           maxLength={MAX_CHARS} 
         />
 
         {/* Word count indicator */}
-        <div className="mt-2 text-sm text-muted-foreground text-right">
+        <div className="mt-2 text-sm  text-right text-green-500">
           {charCount} / {MAX_CHARS} characters
         </div>
 
@@ -88,7 +88,7 @@ export default function EditKnowledge({ knowledge }: EditKnowledgeProps) {
              Submitting <Loader2 className="animate-spin ml-2" size={20}/>
           </Button>
         ) : (
-          <Button type="submit" className="mt-4 w-fit self-end">
+          <Button type="submit" className="mt-4 w-fit self-end  text-black bg-white">
             Submit
           </Button>
         )}

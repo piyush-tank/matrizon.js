@@ -20,15 +20,15 @@ export default function GoogleIntegration({ verified }: { verified: Tverified })
   };
 
   return (
-    <div className="min-h-full space-y-4 p-4">
+    <div style={{marginLeft:"16rem" ,backgroundColor:"black"}} className=" space-y-4 p-4">
       <div className="flex gap-4 justify-between items-center">
-        <h1 className="text-3xl font-bold">Google Integration</h1>
+        <h1 className="text-3xl text-white font-bold">Google Integration</h1>
       </div>
       {/* Long-line card component acting as a toggle */}
-      <div className="border rounded-lg p-4 flex items-center justify-between">
+      <div className="border border-green-500 border-2 rounded-lg p-4 flex items-center justify-between">
         <div>
-          <Label className="text-lg font-medium">Gmail</Label>
-          <p className="text-sm text-gray-600">
+          <Label className="text-lg text-white font-medium">Gmail</Label>
+          <p className="text-sm text-white">
             {isConnected
               ? "Your Gmail account is connected."
               : "Connect your Gmail to send emails."}
@@ -36,14 +36,15 @@ export default function GoogleIntegration({ verified }: { verified: Tverified })
         </div>
         <div className="flex items-center space-x-4">
           {isConnected ? (
-            <Badge className="bg-green-500">Connected</Badge>
+            <Badge  className="bg-green-500 text-white">Connected</Badge>
           ) : (
             <Badge variant="destructive">Not Connected</Badge>
           )}
           <Switch
+          style={{backgroundColor:"#00e676"}}
             checked={isConnected}
             onCheckedChange={handleToggle}
-            className="ml-4"
+            className="ml-4 "
           />
         </div>
       </div>

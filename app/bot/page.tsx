@@ -95,11 +95,11 @@ export default function Home() {
   // }, [messages]);
 
   return (
-    <main className={`${poppins.className} h-[calc(100%-60px)]`}>
-      <div className="flex h-full bg-white ">
+    <main style={{marginLeft:"13rem", backgroundColor:"black"}} className={`${poppins.className} h-[calc(100%-60px)]`}>
+      <div style={{backgroundColor:"black"}} className="flex h-full">
         <div className="flex  flex-col items-center  justify-center relative w-full">
           {messages.length === 0 && (
-            <div className="flex flex-col items-center justify-center flex-1">
+            <div style={{marginTop:"10rem"}} className="flex flex-col items-center  flex-1">
               {/* Logo */}
               {/* <div className="mb-4">
                 <Image
@@ -112,20 +112,21 @@ export default function Home() {
 
               {/* Heading & Subheading */}
 
-              <h1 className="text-2xl font-bold text-gray-800 text-center">
+              <h1 style={{margin:"1.5rem"}} className="text-4xl font-bold text-white text-center">
                 Welcome to aHRi !
               </h1>
-              <p className="text-gray-600 text-[14px]  text-center mt-2 ">
+              <p className="text-white text-[14px]  text-center mt-2 ">
                 Explore aHRi AI&apos;s capabilities and how they benefit your hr
                 team
               </p>
 
               {/* Pre-written Messages */}
-              <div className="flex flex-wrap justify-center gap-2 mt-10 text-sm md:text-base">
+              <div style={{margin:"3rem"}} className="flex flex-wrap justify-center gap-2 mt-10 text-sm md:text-base">
                 {suggestions.map((suggestion, index) => (
                   <button
-                    key={index}
-                    className="bg-[#7813dd] text-black text-[14px] transition-all duration-300 font-medium px-4 py-2 rounded-md hover:bg-[#F4E8FF] shadow flex items-center"
+                    key={index} 
+                    style={{margin:"0.5rem"}}
+                    className="bg-[#1e7c01] text-white text-[15px] transition-all duration-300 font-medium px-4 py-2 rounded-md hover:bg-[#F4E8FF] shadow flex items-center"
                     onClick={() => handleSuggestionClick(suggestion.text)}
                   >
                     {suggestion.icon}
@@ -427,9 +428,9 @@ export default function Home() {
                 </div>
               )}
             </div>
-            <div className="w-full mb-2 flex-col justify-center rounded-lg flex items-center">
+            <div style={{marginBottom:"rem"}} className="w-full mb-2 flex-col justify-center rounded-lg flex items-center">
               <form
-                className="w-5/6 flex rounded-lg items-center border-[#180047] border-2 bg-[#FFFFFF]"
+                className="w-5/6 flex rounded-lg items-center border-[#000000] border-2 bg-[#FFFFFF]"
                 onSubmit={submit}
               >
                 <input
@@ -440,7 +441,7 @@ export default function Home() {
                   onChange={handleInputChange}
                 />
                 <Button
-                  className="bg-[#53108d] text-white mr-1 rounded-lg hover:bg-[#53108dc0]"
+                  className="bg-[#0e8e00] text-white   mr-1 rounded-lg hover:bg-[#53108dc0]"
                   size="icon"
                   onClick={submit}
                 >

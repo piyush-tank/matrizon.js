@@ -26,6 +26,31 @@ const Navbar = () => {
             </div>
           </div>
 
+          
+        <ul className="navbar-menu">
+          <li className="navbar-item">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="navbar-item dropdown">
+            <a href="#">
+              All Pages <span className="dropdown-icon">▾</span>
+            </a>
+          </li>
+          <li className="navbar-item">
+            <a href="/pricing">Pricing</a>
+          </li>
+          <li className="navbar-item">
+            <a href="/blog">Blog</a>
+          </li>
+          <li className="navbar-item">
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+
+
+        
+            
+        
           <div className="navbar-right">
             <div className="navbar-actions flex items-center gap-4">
               {/* 👤 User Profile Button from Clerk */}
@@ -38,6 +63,7 @@ const Navbar = () => {
               >
                 Logout
               </button>
+              <button className="notification-button">🔔</button>
             </div>
           </div>
         </div>

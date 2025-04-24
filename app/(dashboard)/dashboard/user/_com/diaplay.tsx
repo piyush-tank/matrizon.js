@@ -38,30 +38,31 @@ function UsersTable({ orgId }: UsersTableProps) {
 
   return (
     <div className="overflow-x-auto w-full p-4">
-      <table className="min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-black bg-black shadow-md rounded-lg">
+        <thead className="bg-black">
           <tr>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
             >
               Name
             </th>
             <th
+       
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-white uppercase text-[16px] tracking-wider"
             >
-              Email
+              Registered Users Email
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-black divide-y divide-black">
           {users && users.map((user) => (
             <tr key={user.id}>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {user.firstName} {user.lastName}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                 {user.email}
               </td>
             </tr>
